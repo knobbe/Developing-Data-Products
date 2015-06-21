@@ -1,0 +1,57 @@
+1RM Calculator - Coursera's Developing Data Products 
+========================================================
+The best 1 Rep Max calculator that I know of.
+
+date: `r format(Sys.time(), "%B %d, %Y")`
+
+Background
+========================================================
+
+Have you ever noticed the 1RM calculators posted on the internet overestimate your true 1RM? These calculators use a formula that is clearly wrong!
+- 1) They do not consider individuals and their ability to handle uncomfortable weight
+- 2) The formula is biased adding too much weight
+
+
+Well I have a solution for you.....
+
+Example - How it works
+========================================================
+
+```{r, echo=FALSE}
+ True_Max<-function(weight,reps,max_input){ 
+           CalcMax <- weight + weight * (reps - 1) / 30
+           (CalcMax + max_input) / 2
+           }
+           
+Their_Max<-function(weight,reps){ 
+           weight + weight * reps / 30
+           }
+```
+
+Consider this example, 2 months ago you did a backsquat of 315lbs. Yesterday, you had a 5RM PR of 295lbs, so you're curious what you're new estimated 1RM would be.
+
+My calculators estimated 1RM would be:                    
+
+                    `r True_Max(295,5,315)`
+
+And this is what the other calculators would estimate:
+                        
+                    `r Their_Max(295,5)`
+
+What is this wonderful formula?
+========================================================
+
+
+The Median of:
+
+  - Weight + Weight x (Reps - 1) x .033
+
+  - Your estimated 1RM
+
+
+Where Can I find this sweet Calculator?!?!
+========================================================
+
+Right here!
+
+https://knobbe.shinyapps.io/1RM_Calculator
